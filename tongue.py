@@ -35,6 +35,7 @@ def slurp(savepath, vid, filetype):
     if filetype == ".mp3":
         clip = mp.VideoFileClip(savepath + "\\" + cleanName + ".mp4")
         clip.audio.write_audiofile(savepath + "\\" + cleanName + ".mp3")
+        clip.close()
         os.remove(savepath + "\\" + cleanName + ".mp4")
     
     #Passing the cleaned name to the download endpoint
