@@ -13,13 +13,6 @@ def sanitizeName(forbidden_chars, name):
         
 
 def slurp(savepath, vid, filetype):
-    try:
-        title = "\\" + session.get('title', None) + ".mp4"
-        os.remove(vidpath + title)
-    except: 
-        print("no file found")
-    
-    
     yt = YouTube(vid)
     
     #Filter out mp4s by 360p and sanitizes the video title for windows 
