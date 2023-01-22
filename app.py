@@ -15,6 +15,7 @@ def index():
         file_format = request.form["filetype"]
         try:
             tongue.slurp(vidpath, vid, file_format)
+            return redirect(url_for('download'))
         except:
             flash("Download Failed! Please check your link and try again")
             return render_template('index.html')
