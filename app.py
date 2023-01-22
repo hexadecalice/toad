@@ -1,8 +1,8 @@
-from flask import Flask, render_template, url_for, request, redirect, send_from_directory, session, send_file
+from flask import Flask, render_template, url_for, request, redirect, send_from_directory, session, send_file, flash
 import os
 import io
 import tongue
-import moviepy.editor as mp 
+
 
 vidpath = "C:\\Users\\alice\\Desktop\\toad\\videos"
 mp3 = False
@@ -13,8 +13,11 @@ def index():
     if request.method == "POST":
         vid = request.form["vidlink"]
         file_format = request.form["filetype"]
-        tongue.slurp(vidpath, vid, file_format)
-        return redirect(url_for('download'))
+        try:
+            tongue.slurp(vidpath, vid, file_format)
+        except:
+            flash("Download Failed! Please check your link and try again")
+            return render_template('index.html')
         
     return render_template('index.html')
 
@@ -23,7 +26,7 @@ def download():
     filename = session.get('title', None)
     
     #Saves the video to local memory, then sends the video/audio held in memory 
-    #Deletes mp4 file and sends video from the local memory 
+    #Deletes mp4 file after its been converted to a BytesIO object
     videoMemory = io.BytesIO()
     vidLocation = vidpath + "\\" + filename
     with open(vidLocation,'rb') as f: 

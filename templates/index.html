@@ -26,15 +26,22 @@ https://templatemo.com/tm-521-get-ready
 
 </head>
 <body>
+    
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <script> 
+                        //Display flashed messages in an alert box 
+                        //Need to make a base html soon to inherit from on all pages
+                        var messages = {{messages | safe}};
+                        for(var i=0; i < messages.length; i++) {
+                            alert(messages[i]);
+                            
+                        }
+                </script>
+            {% endif %}
+        {% endwith %}
 
-     <!-- PRE LOADER -->
-     <section class="preloader">
-          <div class="spinner">
 
-               <span class="spinner-rotate"></span>
-
-          </div>
-     </section>
 
 
      <!-- HOME -->
@@ -56,11 +63,12 @@ https://templatemo.com/tm-521-get-ready
                                 <select name="filetype" id="filetype">
                                     <option value=".mp3">mp3</option>
                                     <option value=".mp4">mp4</option>
-                                </select>
+                                </select> 
                             </form>
                               </div>
                          </div>
                     </div>
+                
               
 
                </div>
