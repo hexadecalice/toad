@@ -4,7 +4,7 @@ import io
 import tongue
 
 
-vidpath = "C:\\Users\\alice\\Desktop\\toad\\videos"
+vidpath = "PATH_TO_SAVE_YOUR_VIDEO"
 mp3 = False
 app = Flask(__name__)
 app.secret_key = "hello losererererererere"
