@@ -6,4 +6,3 @@ It uses the pytube package to download youtube videos as .mp4's and can convert 
 
 The backend is entirely minimal python flask, with the frontend being done in boostrap.
 The inline coding in the index.html file is jinja as provided by the flask framework.
-s
