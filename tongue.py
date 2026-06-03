@@ -25,10 +25,10 @@ def slurp(savepath, vid, filetype):
     #Use moviepy to convert downloaded mp4 to audio and save under the same name
     #Clean up the unneeded mp4 file
     if filetype == ".mp3":
-        clip = mp.VideoFileClip(savepath + "\\" + cleanName + ".mp4")
-        clip.audio.write_audiofile(savepath + "\\" + cleanName + ".mp3")
+        clip = mp.VideoFileClip(os.path.join(savepath, cleanName + ".mp4"))
+        clip.audio.write_audiofile(os.path.join(savepath, cleanName + ".mp3"))
         clip.close()
-        os.remove(savepath + "\\" + cleanName + ".mp4")
+        os.remove(os.path.join(savepath, cleanName + ".mp4"))
     
     #Passing the cleaned name/filetype to the download endpoint
     session['title'] = cleanName + filetype
